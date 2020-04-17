@@ -66,6 +66,7 @@
   </div>
   {{ end }}
 
+  {{ if ($.Param "enableBioSocial" | default true) }}
   <div class="bio__social">
     {{ range $name, $path := $.Param "socialOptions" }}
       {{ if (and $path (ne $name "email")) }}
@@ -75,6 +76,7 @@
       {{ end }}
     {{ end }}
   </div>
+  {{ end }}
 </section>
 <hr class="hr-fade sidebar-hr"/>
 {{ end }}

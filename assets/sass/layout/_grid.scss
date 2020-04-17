@@ -6,7 +6,7 @@ $grid_max_width: 960;
     } @else if $viewport_size == wider {
         $grid_max_width: 1440;
     } @else if $viewport_size == wide {
-        $grid_max_width: 1280;
+        $grid_max_width: 1200;
     } @else if $viewport_size == narrow {
         $grid_max_width: 800;
     } @else {
