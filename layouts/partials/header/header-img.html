@@ -2,7 +2,7 @@
   {{ range $.Params.header }}
     {{ if eq .type "img" }}
     <div class="site-header basicflex-column site-header__align-{{ .align }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}" style="background-image: url('{{ .imageSrc | relURL }}'); background-size: {{ .imageSize }};
-    background-repeat: {{ .imageRepeat }}; background-position: {{ .imagePosition }}; width: 100%; height: {{ .height }}px; padding: {{ .paddingY }}px {{ .paddingX }}px;">
+    background-repeat: {{ .imageRepeat }}; background-position: {{ .imagePosition }}; width: 100%; height: calc({{ .height }} - {{ $.Site.Data.grid.grid_navbar_height }}); padding: {{ .paddingY }}px {{ .paddingX }}px;">
       {{ $header := . }}
       {{ if .title }}
         {{ range .title }}
