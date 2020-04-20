@@ -5,7 +5,7 @@
   overflow-wrap: break-word;
 
   &__title {
-    font-size: 2.5rem;
+    font-size: 1.6875rem;
     font-weight: 900;
     font-family: $title-font;
     line-height: 3rem;
@@ -36,7 +36,7 @@
   }
 
   &__shorttitle {
-    font-size: 1.5rem;
+    font-size: 1.0125rem;
     font-family: $title-font;
     overflow-wrap: break-word;
     margin-bottom: 0.25rem;
@@ -134,22 +134,22 @@
     }
 
     h1 {
-      font-size: 2.6rem;
+      font-size: 1.7rem;
       margin: 3.5rem 0 1.75rem 0;
     }
 
     h2 {
-      font-size: 2.2rem;
+      font-size: 1.5rem;
       margin: 3.2rem 0 1.5rem 0;
     }
 
     h3 {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       margin: 2.8rem 0 1.25rem 0;
     }
 
     h4 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       margin: 2.4rem 0 1rem 0;
     }
 
