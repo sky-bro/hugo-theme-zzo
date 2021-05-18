@@ -5,7 +5,7 @@
   overflow-wrap: break-word;
 
   &__title {
-    font-size: 2.5rem;
+    font-size: 2.5em;
     font-weight: 900;
     font-family: $title-font;
     line-height: 3rem;
@@ -97,7 +97,7 @@
     }
 
     margin: 1rem 0;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     line-height: 1.7;
     width: inherit;
     max-width: inherit;
@@ -134,7 +134,7 @@
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.5em;
       margin: 3.5rem 0 1.75rem 0;
     }
 
@@ -168,7 +168,7 @@
       overflow: auto;
       border-radius: 0.34rem;
       line-height: 1.5;
-      font-size: 13.8px;
+      font-size: 0.85em;
       direction: ltr;
       
       @include themify($themes) {
@@ -201,7 +201,7 @@
         height: 30px;
         z-index: z('content');
         line-height: 30px;
-        font-size: 13.8px;
+        font-size: 0.85em;
         font-family: $title-font;
         font-weight: bold;
         display: inline-block;
@@ -272,7 +272,7 @@
     }
 
     blockquote {
-      font-size: 1.05rem;
+      font-size: 1.05em;
       line-height: 1.75;
       color: inherit;
       opacity: 0.8;
@@ -447,7 +447,7 @@
 code, pre {  
   padding: .5rem 0;
   line-height: 1.5;
-  font-size: 13.8px;
+  font-size: 0.85em;
   font-family: $code-font-stack;
   overflow: auto;
 
@@ -551,7 +551,7 @@ pre:not(.chroma) {
       width: 100%;
       height: 30px;
       line-height: 1.9;
-      font-size: 13.8px;
+      font-size: 0.85em;
       font-family: $title-font;
       font-weight: bold;
       display: inline-block;      
