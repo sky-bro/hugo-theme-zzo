@@ -1,0 +1,16 @@
+{{ $id := .Get "id" }}
+{{ $type := 2 }}
+{{ $height := 110 }}
+{{ if (eq (.Get "isList") "true")}}
+  {{ $type = 0 }}
+  {{ $height = 260 }}
+{{ end }}
+<iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width=330
+    height={{ $height }}
+    src="//music.163.com/outchain/player?type={{ $type }}&id={{ $id }}&height={{ sub $height 20 }}">
+</iframe>
