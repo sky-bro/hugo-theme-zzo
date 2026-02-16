@@ -184,11 +184,11 @@
     {{ $busuanziPagePV := .Site.Params.busuanziPagePV }}
     var enableBusuanzi = JSON.parse({{ $enableBusuanzi | jsonify }});
     var busuanziPagePV = JSON.parse({{ $busuanziPagePV | jsonify }});
-    
+
     if (enableBusuanzi && busuanziPagePV) {
       var pagePvElem = document.querySelector('#busuanzi_value_page_pv');
       pagePvElem.textContent = pagePvElem.textContent.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-    }    
+    }
     // =================================================================
 
 
@@ -198,14 +198,14 @@
     {{ $toc := ($.Param "toc") }}
     {{ $hideToc := ($.Param "hideToc") }}
     {{ $tocFolding := $.Param "tocFolding" }}
-    
+
     var enableToc = JSON.parse({{ $enableToc | jsonify }});
     var toc = JSON.parse({{ $toc | jsonify }});
     var hideToc = JSON.parse({{ $hideToc | jsonify }});
     var tocFlexbox = document.querySelector('.toc__flexbox');
     var tocFlexboxOuter = document.querySelector('.toc__flexbox--outer');
     var tocFolding = JSON.parse({{ $tocFolding | jsonify }});
-    
+
     if ((enableToc || toc) && document.querySelector('.toc')) {
       var tableOfContentsElem = document.querySelector('.toc').querySelector('#TableOfContents');
 
@@ -245,7 +245,7 @@
                 navbar.classList.remove('navbar--hide');
                 navbar.classList.add('navbar--hide');
               }
-              
+
               document.querySelector('.toc').querySelectorAll('a').forEach(function (elem) {
                 elem.classList.remove('active');
               });
@@ -287,7 +287,7 @@
       var sideElem = document.querySelector('side');
       var tocFlexboxElem = document.querySelector('.toc__flexbox');
 
-      toggleTocElem ? 
+      toggleTocElem ?
       toggleTocElem.addEventListener('change', function(e) {
         if (e.target.checked) {
           if (tocElem) {
@@ -338,9 +338,9 @@
       }) : null;
     }
     // =================================================================
-    
-    
-    
+
+
+
     // ======================== TOC height calc ========================
     var topOffset = 120;
     var botOffset = 70;
@@ -352,7 +352,7 @@
     var throttledWindowResize = throttle(handleWindowResize, 300);
     throttledWindowResize()
 
-    
+
     window.addEventListener('resize', throttledWindowResize);
     // =================================================================
 
@@ -365,7 +365,7 @@
     {{ $languagedir := ($.Param "languagedir" | default "ltr") }}
     var languagedir = JSON.parse({{ $languagedir | jsonify }});
 
-    headers ? 
+    headers ?
     headers.forEach(function (elem) {
       var size = parseInt(elem.tagName.substr(1), 10) * 2;
       var url = encodeURI(document.location.origin + document.location.pathname);
@@ -433,7 +433,7 @@
       } else {
         mermaid.initialize({ theme: 'default' });
       }
-      
+
       var mermaids = [];
       [].push.apply(mermaids, document.getElementsByClassName('language-mermaid'));
       mermaids.forEach(function(elem) {
@@ -453,7 +453,7 @@
     }
     // =================================================================
 
-    
+
 
     // ============================= katex =============================
     if (lib && lib.includes('katex')) {
@@ -494,15 +494,15 @@
           diagram.drawSVG("flowchart"+index, options);
 
           index +=1;
-      });      
+      });
     }
     // =================================================================
 
-    
+
 
     // ============================ mathjax ============================
     document.querySelectorAll("mjx-container").forEach(function (x) {
-      x.parentElement.classList += 'has-jax'
+      x.parentElement.classList += ' has-jax'
     });
     // =================================================================
 
@@ -568,7 +568,7 @@
         var ctx = document.getElementById('myChart' + index).getContext('2d');
         var myChart = new Chart(ctx, source);
         index += 1;
-      });            
+      });
     }
     // =================================================================
 
@@ -579,7 +579,7 @@
       var wavePrefix = "language-wave";
       var index = 0;
       var jsonContent = null;
-      
+
       Array.prototype.forEach.call(document.querySelectorAll("[class^=" + wavePrefix + "]"), function (x) {
         x.style.display = 'none'
         x.parentNode.style.backgroundColor = "transparent"
@@ -618,6 +618,6 @@
       });
     }
     // =================================================================
-    
+
   }
 </script>
