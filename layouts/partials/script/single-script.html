@@ -115,7 +115,7 @@
   <script defer src="{{ $d3.d3_cloud.url }}" integrity="{{ $d3.d3_cloud.sri }}" crossorigin="anonymous"></script>
 {{ end }}
 
-{{ if in .Params.Libraries "mermaid" }}
+{{ if .Store.Get "hasMermaid" }}
   <script defer src="{{ $js.mermaid.url }}" integrity="{{ $js.mermaid.sri }}" crossorigin="anonymous"></script>
 {{ end }}
 
@@ -420,36 +420,14 @@
 
 
     // ============================ mermaid ============================
-    {{ $lib := .Params.libraries }}
-    var lib = JSON.parse({{ $lib | jsonify }});
-
-    if (lib && lib.includes('mermaid')) {
+    {{ if .Store.Get "hasMermaid" }}
       {{ $themeVariant := (index .Site.Params.themeOptions 0) }}
       var themeVariant = localStorage.getItem('theme') || JSON.parse({{ $themeVariant | jsonify }});
-
-      if (themeVariant === "dark" || themeVariant === "hacker") {
-        mermaid.initialize({ theme: 'dark' });
-      } else {
-        mermaid.initialize({ theme: 'default' });
-      }
-
-      var mermaids = [];
-      [].push.apply(mermaids, document.getElementsByClassName('language-mermaid'));
-      mermaids.forEach(function(elem) {
-        var elemParentNode = elem.parentNode;
-
-        if (elemParentNode !== document.body) {
-          elemParentNode.parentNode.insertBefore(elem, elemParentNode);
-          elemParentNode.parentNode.removeChild(elemParentNode);
-        }
-
-        var newElemWrapper = document.createElement('div');
-        newElemWrapper.classList.add('mermaid');
-        newElemWrapper.style.padding = '34px 4px 6px';
-        newElemWrapper.innerHTML = elem.innerHTML;
-        elem.replaceWith(newElemWrapper);
+      mermaid.initialize({
+        theme: (themeVariant === "dark" || themeVariant === "hacker") ? 'dark' : 'default'
       });
-    }
+      mermaid.run();
+    {{ end }}
     // =================================================================
 
 
