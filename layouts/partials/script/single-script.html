@@ -142,7 +142,22 @@
     options: {
       skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
       ignoreHtmlClass: 'tex2jax_ignore',
-      processHtmlClass: 'tex2jax_process'
+      processHtmlClass: 'tex2jax_process',
+      enableEnrichment: true,
+      enableSpeech: true,
+      enableBraille: false,
+      menuOptions: {
+        settings: {
+          enrich: true,
+          speech: true,
+          braille: false,
+          assistiveMml: false
+        }
+      },
+      a11y: {
+        speech: true,
+        braille: false
+      }
     }
   };
   </script>
@@ -177,6 +192,7 @@
   window.onload = function() {
     var navbar = document.querySelector('.navbar');
     var singleContentsElem = document.querySelector('.single__contents');
+    var lib = JSON.parse({{ (.Params.Libraries | default slice) | jsonify }});
 
     // ======================= busuanzi counter ========================
     {{ $enableBusuanzi := .Site.Params.enableBusuanzi }}
