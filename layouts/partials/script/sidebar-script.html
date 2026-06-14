@@ -1,4 +1,20 @@
 <script>
+    window.toggleSidebarTaxonomy = function (toggle) {
+        var taxo = toggle.closest('.taxo');
+        if (!taxo) {
+            return;
+        }
+
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        var nextExpanded = !expanded;
+        taxo.querySelectorAll('.taxo__item--extra').forEach(function (item) {
+            item.hidden = !nextExpanded;
+        });
+        taxo.classList.toggle('is-expanded', nextExpanded);
+        toggle.setAttribute('aria-expanded', nextExpanded);
+        toggle.textContent = nextExpanded ? toggle.dataset.less : toggle.dataset.more;
+    };
+
     {{ $sidebarPosition:= $.Param "sidebarPosition" }}
     var sidebarPosition = JSON.parse({{ $sidebarPosition | jsonify }});
     {{ $enableSidebar:= $.Param "enableSidebar" }}
@@ -70,4 +86,5 @@
         deferSetup: true,
         destroy: function () { },
     });
+
 </script>

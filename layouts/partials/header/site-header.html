@@ -1,4 +1,5 @@
 {{ if .IsHome }}
+{{ if ne ($.Param "homeHeaderType") "none" }}
 <header class="header {{ if $.Param "hideHomeHeaderWhenMobile" }}hide-mobile{{ end }}">
     {{ if and ($.Param "homeHeaderType") (eq ($.Param "homeHeaderType") "slide") }}
         {{ partial "header/header-slide" . }}
@@ -12,4 +13,5 @@
         {{ partial "header/custom-header" . }}
     {{ end }}
 </header>
+{{ end }}
 {{ end }}

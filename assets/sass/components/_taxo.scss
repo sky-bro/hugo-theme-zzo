@@ -68,6 +68,30 @@
     }
   }
 
+  &__item--extra[hidden] {
+    display: none !important;
+  }
+
+  &__toggle {
+    display: inline-block;
+    margin: 0 0 0.25rem 0;
+    padding: 0.125rem 0.35rem;
+    border: 0;
+    border-radius: 0.175rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: $title-font;
+
+    @include themify($themes) {
+      color: themed('taxo-title-color');
+      background-color: themed('taxo-num-background-color');
+    }
+
+    @include on-event {
+      text-decoration: underline;
+    }
+  }
+
   .title {
     display: block;
     margin: 0rem;

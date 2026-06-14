@@ -16,6 +16,12 @@ other = "分类"
 [series]
 other = "系列"
 
+[show-more]
+other = "更多"
+
+[show-less]
+other = "收起"
+
 [archive-dateformat]
 other = "01-02"
 

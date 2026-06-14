@@ -18,6 +18,7 @@ enableUiAnimation = true
 hideSingleContentsWhenJSDisabled = false
 enablePinnedPosts = true
 minItemsToShowInTagCloud = 1 # Minimum items to show in tag cloud
+sidebarTaxonomyVisibleItems = 8 # Taxonomy items shown in the sidebar before the rest are collapsed.
 
 # appbar
 enableAppbarSearchIcon = false

@@ -1,0 +1,39 @@
+{{ $ctx := .context }}
+{{ if and .enabled (ne (len .taxonomy) 0) }}
+{{ $visibleItems := $ctx.Site.Params.sidebarTaxonomyVisibleItems | default 8 }}
+{{ if lt $visibleItems 1 }}
+    {{ $visibleItems = 8 }}
+{{ end }}
+<div class="taxo" data-taxo="{{ .name }}">
+    <section>
+        <span class="title p2">
+            <a href="{{ .url | relLangURL }}" class="taxo__title">
+                {{ .title }}
+            </a>
+        </span>
+        {{ $minItemsToShowInTagCloud := $ctx.Site.Params.minItemsToShowInTagCloud }}
+        {{ $shown := 0 }}
+        {{ range $index, $element := .taxonomy.ByCount }}
+        {{ if ge $element.Count $minItemsToShowInTagCloud }}
+            {{ $isExtra := ge $shown $visibleItems }}
+            <span class="tag taxo__item{{ if $isExtra }} taxo__item--extra{{ end }}"{{ if $isExtra }} hidden{{ end }}>
+                <a href="{{ $element.Page.RelPermalink }}" class="{{ $.class }} taxo__link" data-dir="{{ if ne ($ctx.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+                    <span class="taxo__text">
+                        {{ $element.Page.Title }}
+                    </span>
+                    <span class="taxo__num" dir="auto">
+                        {{ printf "%#v" $element.Count }}
+                    </span>
+                </a>
+            </span>
+            {{ $shown = add $shown 1 }}
+        {{ end }}
+        {{ end }}
+        {{ if gt $shown $visibleItems }}
+            <button class="taxo__toggle" type="button" aria-expanded="false" data-more="{{ i18n "show-more" | default "More" }}" data-less="{{ i18n "show-less" | default "Less" }}" onclick="toggleSidebarTaxonomy(this)">
+                {{ i18n "show-more" | default "More" }}
+            </button>
+        {{ end }}
+    </section>
+</div>
+{{ end }}

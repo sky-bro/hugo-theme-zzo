@@ -16,6 +16,12 @@ other = "Categories"
 [series]
 other = "Series"
 
+[show-more]
+other = "More"
+
+[show-less]
+other = "Less"
+
 [archive-dateformat]
 other = "Jan 2"
 

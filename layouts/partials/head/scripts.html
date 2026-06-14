@@ -650,12 +650,10 @@
 
 
   // ========================== search ==========================
-    {{ $baseurl := $.Site.BaseURL }}
-    var baseurl = JSON.parse({{ $baseurl | jsonify }});
     {{ $permalink := .Permalink }}
     var permalink = JSON.parse({{ $permalink | jsonify }});
-    {{ $langprefix := $.Site.LanguagePrefix }}
-    var langprefix = JSON.parse({{ $langprefix | jsonify }});
+    {{ $searchIndexURL := "/index.json" | relLangURL }}
+    var searchIndexURL = JSON.parse({{ $searchIndexURL | jsonify }});
     var searchResults = null;
     var searchMenu = null;
     var searchText = null;
@@ -685,7 +683,7 @@
         if (sectionType === "publication" && kind !== "page") {
           xhr.open('GET', permalink + "index.json");
         } else {
-          xhr.open('GET', baseurl + langprefix + "/index.json");
+          xhr.open('GET', searchIndexURL);
         }
         
         xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
@@ -1043,6 +1041,9 @@
       }
 
       searchText = e.target.value;
+      if (!fuse) {
+        return null;
+      }
       var results = fuse.search(e.target.value);
       
       if (searchResultPosition === "main") {
@@ -1086,6 +1087,9 @@
       }
 
       searchText = e.target.value;
+      if (!fuse) {
+        return null;
+      }
       var results = fuse.search(e.target.value);
 
       if (searchResultPosition === "main") {
@@ -1189,6 +1193,9 @@
       }
 
       searchText = e.target.value;
+      if (!fuse) {
+        return null;
+      }
       var results = fuse.search(e.target.value);
       renderSearchResultsMobile(searchText, results);
       if (enableSearchHighlight) {
